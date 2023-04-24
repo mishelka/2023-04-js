@@ -18,9 +18,34 @@ function printTriangle() {
     let str = '';
     while(i < size) {
         str = getChars(size - i - 1, ' ');
-        str += getChars(2 * (i + 1), '*');
+        // str += getChars(2 * (i + 0.5), '*');
+        str += getChars((2 * i) + 1, '*');
         console.log(str);
+        i++;
     }
+}
+
+function printLine() {
+    let str = '';
+    for (let i = 0; i < size; i++) {
+        str = str + '*';
+    }
+    console.log(str);
+}
+
+function printSquare() {
+    let str = '';
+    for (let row = 0; row < size; row++) {
+        for (let i = 0; i < size; i++) {
+            str = str + '* ';
+        }
+        str = str + '\n';
+    }
+    console.log(str);
+}
+
+function printRectangle() {
+    
 }
 
 function getChars(length, character) {
