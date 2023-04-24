@@ -44,6 +44,8 @@ function printSquare() {
     console.log(str);
 }
 
+const width = 10; const height = 5;
+
 function printRectangle() {
     
 }
