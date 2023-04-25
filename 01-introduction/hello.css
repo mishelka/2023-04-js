@@ -7,7 +7,7 @@ table th, table td {
     padding: 8px;
 }
 
-div {
+div[class$="-section"] {
     margin: 20px;
     padding: 20px;
 }
@@ -57,3 +57,13 @@ a {
 
 a:hover, a:focus { color: black; }
 a:visited { color: saddlebrown; }
+
+input {
+    width: 100%;
+    margin-bottom: 8px;
+    margin-top: 2px;
+}
+
+input[type="text"], input[type="number"] {
+    padding: 8px 4px;
+}
