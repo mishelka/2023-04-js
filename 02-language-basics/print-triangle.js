@@ -39,9 +39,9 @@ function printSquare() {
         for (let i = 0; i < size; i++) {
             str = str + '* ';
         }
-        str = str + '\n';
+        str = str + '<br/>';
     }
-    console.log(str);
+    document.write(str);
 }
 
 const width = 10; const height = 5;
