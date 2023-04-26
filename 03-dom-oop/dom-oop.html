@@ -1,0 +1,44 @@
+<html>
+    <head>
+        <title>Nas JS HelloWorld!</title>
+        <script type="text/javascript"
+                src="dom-oop.js"></script>
+        <link rel="stylesheet" type="text/css" href="dom-oop.css">
+    </head>
+    <body>
+        <div class="blue-section">
+            <h1>TODO</h1>
+            <ul id="taskList">
+                <li>toto tu bolo predtym</li>
+                <li>aj toto tu bolo</li>
+            </ul>
+
+            <form name="taskForm">
+                <div><small><label for="task">
+                    Zadaj novu ulohu:
+                </label></small></div>
+                <input type="text" id="task" name="task">
+                <button type="submit"
+                        onclick="addTask(event)">Pridat</button>
+            </form>
+        </div>
+        <div class="green-section">
+            <h1>Persons</h1>
+
+            
+
+            <table id="redtable">
+                <thead>
+                    <tr>
+                        <th>Meno</th>
+                        <th>Priezvisko</th>
+                        <th>Vek</th>
+                    </tr>
+                </thead>
+                <tbody id="personTable">
+                </tbody>
+            </table>
+        </div>
+        <noscript>Please turn your JavaScript on.</noscript>
+    </body>
+</html>

@@ -1,0 +1,69 @@
+/* #redtable tbody {
+    background-color: black;
+    color: white;
+} */
+
+table th, table td {
+    padding: 8px;
+}
+
+div[class$="-section"] {
+    margin: 20px;
+    padding: 20px;
+}
+
+.red-section {
+    background-color: orangered;
+    border: 14px solid darkred;
+}
+.blue-section {
+    background-color: aquamarine;
+    border: 14px solid darkslateblue;
+}
+.green-section {
+    background-color: yellowgreen;
+    border: 14px solid darkgoldenrod;
+}
+
+table {
+    background-color: white;
+    width: 100%;
+    text-align: left;
+    border-spacing: 0;
+    margin: 16px 0;
+}
+
+table thead { color: white;}
+table tbody tr:nth-child(even) { background-color:rgb(187, 186, 186)}
+table tbody tr:hover { background-color: lightslategray; }
+
+.red-section table { background-color: antiquewhite; }
+.red-section table thead { background-color: brown; }
+.blue-section table { background-color: lightcyan; }
+.blue-section thead { background-color: black; }
+.green-section table { background-color: lightyellow; }
+.green-section table thead { background-color: orange; }
+
+.smiley {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 50%;
+}
+
+a {
+    color: brown;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+a:hover, a:focus { color: black; }
+a:visited { color: saddlebrown; }
+
+input {
+    width: 100%;
+    margin-bottom: 8px;
+    margin-top: 2px;
+}
+
+input[type="text"], input[type="number"] {
+    padding: 8px 4px;
+}
