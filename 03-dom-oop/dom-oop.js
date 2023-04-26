@@ -33,6 +33,12 @@ document.addEventListener("DOMContentLoaded", () => {
     renderPersonTable();
 });
 
+function upperCase() {
+    let elem = document.getElementById("task").value;
+    //let elem = document.taskForm.task.value;
+    document.getElementById("task").value = elem.toUpperCase();
+}
+
 function addTask(event) {
     event.preventDefault();
     // console.log(event);
@@ -93,4 +99,10 @@ function deletePerson(personIndex) {
     renderPersonTable();
 
     console.log("deleting person " + personIndex);
+}
+
+function moveElement() {
+    let superWidget = document.getElementById("widget1");
+    let ul = superWidget.parentNode;
+    ul.appendChild(superWidget);
 }

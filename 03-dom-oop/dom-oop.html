@@ -17,9 +17,11 @@
                 <div><small><label for="task">
                     Zadaj novu ulohu:
                 </label></small></div>
-                <input type="text" id="task" name="task">
+                <input type="text" id="task" name="task" onblur="upperCase()">
+                
                 <button type="submit"
                         onclick="addTask(event)">Pridat</button>
+                <button type="reset">Reset</button>
             </form>
         </div>
         <div class="green-section">
@@ -60,6 +62,21 @@
 
                 <button type="submit">Pridaj Osobu</button>
             </form>
+        </div>
+
+        <div class="red-section">
+            <button onclick="moveElement()">Move element example</button>
+            <ul>
+                <li id="widget1">
+                    <a href="superwidget.html">SuperWidget</a>
+                </li>
+                <li id="widget2">
+                    <a href="megawidget.html">MegaWidget</a>
+                </li>
+                <li id="widget3">
+                    <a href="wonderwidget.html">WonderWidget</a>
+                </li>
+            </ul>
         </div>
         <noscript>Please turn your JavaScript on.</noscript>
     </body>
