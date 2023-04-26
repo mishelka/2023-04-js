@@ -34,6 +34,7 @@ table {
 }
 
 table thead { color: white;}
+table tbody tr { transition: background-color 0.3s ease-in-out; }
 table tbody tr:nth-child(even) { background-color:rgb(187, 186, 186)}
 table tbody tr:hover { background-color: lightslategray; }
 
