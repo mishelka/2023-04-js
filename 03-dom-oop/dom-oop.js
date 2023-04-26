@@ -30,27 +30,67 @@ document.addEventListener("DOMContentLoaded", () => {
         taskListElem.innerHTML += ('<li>' + t + '</li>');
     }
 
-    const personTableElem = document.getElementById("personTable");
-    
-    personTableElem.innerHTML = '';
-    for (const p of persons) {
-        personTableElem.innerHTML += (`
-            <tr>
-                <td>${p.name}</td>
-                <td>${p.lastName}</td>
-                <td>${p.age}</td>
-            </tr>
-        `);
-    }
+    renderPersonTable();
 });
 
 function addTask(event) {
     event.preventDefault();
     // console.log(event);
-    const newTaskElem = document.taskForm.task;
+    const newTaskInput = document.taskForm.task;
     
     const taskListElem = document.getElementById("taskList");
-    taskListElem.innerHTML += ('<li>' + newTaskElem.value + '</li>');
+    taskListElem.innerHTML += ('<li>' + newTaskInput.value + '</li>');
 
-    newTaskElem.value = '';
+    newTaskInput.value = '';
+}
+
+function personSubmit() {
+    const nameInput = document.personForm.fname;
+    const lastNameInput = document.personForm.lname;
+    const ageInput = document.personForm.age;
+
+    const newPersonObject = {
+        name: nameInput.value,
+        lastName: lastNameInput.value,
+        age: ageInput.value,
+    };
+
+    console.log(newPersonObject);
+    persons.push(newPersonObject);
+
+    renderPersonTable();
+
+    return false;
+}
+
+function renderPersonTable() {
+    const personTableElem = document.getElementById("personTable");
+    personTableElem.innerHTML = '';
+    for (const i in persons) {
+        personTableElem.innerHTML += (`
+            <tr id="person-${i}">
+                <td>${persons[i].name}</td>
+                <td>${persons[i].lastName}</td>
+                <td>${persons[i].age}</td>
+                <td>
+                    <button onclick="deletePerson(${i})">
+                        <img src="img/icon-delete.png" alt="Delete icon" width="16px">
+                        Delete
+                    </button>
+                </td>
+            </tr>
+        `);
+    }
+}
+
+function deletePerson(personIndex) {
+    // prvy pristup - zmazem z HTML konkretny riadok tabulky podla jeho id
+    // const personRowElem = document.getElementById("person-" + personIndex);
+    // console.log(personRowElem);
+
+    // druhy pristup - zmazem z pola persons a prekreslim celu tabulku
+    delete persons[personIndex];
+    renderPersonTable();
+
+    console.log("deleting person " + personIndex);
 }
