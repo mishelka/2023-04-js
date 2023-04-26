@@ -23,15 +23,28 @@ let persons = [
 ];
 
 document.addEventListener("DOMContentLoaded", () => {
+    renderTaskList();
+    renderPersonTable();
+});
+
+function renderTaskList() {
     const taskListElem = document.getElementById("taskList");
     // taskListElem.innerHTML += "<li>ahoj</li>";
     taskListElem.innerHTML = '';
-    for (const t of tasks) {
-        taskListElem.innerHTML += ('<li>' + t + '</li>');
+    for (const i in tasks) {
+        taskListElem.innerHTML += (`
+            <li>
+                ${tasks[i]}
+                <button onclick="deleteTask(${i})">X</button>
+            </li>
+        `);
     }
+}
 
-    renderPersonTable();
-});
+function deleteTask(taskIndex) {
+    delete tasks[taskIndex];
+    renderTaskList();
+}
 
 function upperCase() {
     let elem = document.getElementById("task").value;
@@ -44,9 +57,9 @@ function addTask(event) {
     // console.log(event);
     const newTaskInput = document.taskForm.task;
     
-    const taskListElem = document.getElementById("taskList");
-    taskListElem.innerHTML += ('<li>' + newTaskInput.value + '</li>');
-
+    tasks.push(newTaskInput.value);
+    renderTaskList();
+    
     newTaskInput.value = '';
 }
 
@@ -63,7 +76,8 @@ function personSubmit() {
 
     console.log(newPersonObject);
     persons.push(newPersonObject);
-
+    
+    togglePersonForm();
     renderPersonTable();
 
     return false;
@@ -102,7 +116,12 @@ function deletePerson(personIndex) {
 }
 
 function moveElement() {
-    let superWidget = document.getElementById("widget1");
-    let ul = superWidget.parentNode;
+    const superWidget = document.getElementById("widget1");
+    const ul = superWidget.parentNode;
     ul.appendChild(superWidget);
+}
+
+function togglePersonForm() {
+    const formElem = document.getElementById("personFormContainer");
+    formElem.classList.toggle("hidden");
 }

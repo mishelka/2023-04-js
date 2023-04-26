@@ -25,7 +25,12 @@
             </form>
         </div>
         <div class="green-section">
-            <h1>Persons</h1>
+            <div class="section-toolbar">
+                <h1>Persons</h1>
+                <button onclick="togglePersonForm()">
+                    Add a new Person
+                </button>
+            </div>
 
             <table id="redtable">
                 <thead>
@@ -40,28 +45,31 @@
                 </tbody>
             </table>
 
-            <h2>Add a new Person</h2>
+            <div id="personFormContainer" 
+                 class="hidden">
+                <h2>Add a new Person</h2>
 
-            <form name="personForm"
-                  onsubmit="event.preventDefault();
-                            return personSubmit()">
-                <div><small><label for="fname">
-                    Meno:
-                </label></small></div>
-                <input type="text" id="fname" name="fname">
+                <form name="personForm"
+                    onsubmit="event.preventDefault();
+                                return personSubmit()">
+                    <div><small><label for="fname">
+                        Meno:
+                    </label></small></div>
+                    <input type="text" id="fname" name="fname">
 
-                <div><small><label for="lname">
-                    Priezvisko:
-                </label></small></div>
-                <input type="text" id="lname" name="lname">
+                    <div><small><label for="lname">
+                        Priezvisko:
+                    </label></small></div>
+                    <input type="text" id="lname" name="lname">
 
-                <div><small><label for="age">
-                    Vek:
-                </label></small></div>
-                <input type="number" id="age" name="age">
+                    <div><small><label for="age">
+                        Vek:
+                    </label></small></div>
+                    <input type="number" id="age" name="age">
 
-                <button type="submit">Pridaj Osobu</button>
-            </form>
+                    <button type="submit">Pridaj Osobu</button>
+                </form>
+            </div>
         </div>
 
         <div class="red-section">
