@@ -1,4 +1,4 @@
-//array
+//pole (array)
 let tasks = ["Nakupit", "Povysavat", "Naprogramovat", "Kupit auto"];
 /*
 // document.write(tasks);
@@ -14,6 +14,7 @@ let tasks = ["Nakupit", "Povysavat", "Naprogramovat", "Kupit auto"];
 // document.write('</ul>');
 */
 
+//pole objektov (array of objects)
 let persons = [
     { name: "Jano", lastName: "Hrach", age: 18 },
     { name: "Miro", lastName: "Kolesar", age: 25 },
