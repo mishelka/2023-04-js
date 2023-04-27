@@ -113,7 +113,27 @@ button.small {
 
 .person-detail {
     display: grid;
-    columns: 2;
+    grid-template-columns: 1fr 2fr 1fr 2fr;
     column-gap: 0.5rem;
     row-gap: 0.25;
+}
+
+.person-detail div {
+    padding-top: 1rem;
+}
+
+@media screen and (max-width: 600px) {
+    .person-detail {
+        grid-template-columns: 1fr 2fr;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .person-detail {
+        grid-template-columns: 1fr;
+    }
+
+    .person-detail div:not(:has(label)) {
+        padding-top: 0;
+    }
 }
