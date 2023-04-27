@@ -132,16 +132,21 @@ button.small {
 
 .person-detail-container {
     height: 100vh;
-    position: fixed;
+    
     background-color: green;
     border: 1px solid darkgreen;
     padding: 2rem;
     border-radius: 0.5rem;
+    
+    position: fixed;
     top: 0;
     right: -10px;
     width: 50%;
     z-index: 20;
+
     transform: translateX(0);
+
+    transition: transform 0.3s ease-in-out;
 }
 
 .person-detail {
