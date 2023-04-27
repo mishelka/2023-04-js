@@ -16,15 +16,48 @@ let tasks = ["Nakupit", "Povysavat", "Naprogramovat", "Kupit auto"];
 
 //pole objektov (array of objects)
 let persons = [
-    { name: "Jano", lastName: "Hrach", age: 18 },
+    {
+      name: "Jano", 
+      lastName: "Hrach",
+      age: 18
+    },
     { name: "Miro", lastName: "Kolesar", age: 25 },
     { name: "Miska", lastName: "Bacikova", age: 38 },
     { name: "Peto", lastName: "Bacik", age: 39 },
 ];
 
+async function getTodoListFromServer() {
+    const BASE_URL = 'https://jsonplaceholder.typicode.com/todos'
+    
+    try {
+        const response = await fetch(BASE_URL);
+        if (response.status === 200) {
+            tasks = await response.json();
+            renderTaskList();
+        }
+    } catch (err) {
+        console.error("Sorry, an error occured", err);
+    }
+}
+
+async function getPersonsFromServer() {
+    const BASE_URL = 'https://jsonplaceholder.typicode.com/users'
+    
+    try {
+        const response = await fetch(BASE_URL);
+        if (response.status === 200) {
+            persons = await response.json();
+            console.log(persons);
+            renderPersonTable();
+        }
+    } catch (err) {
+        console.error("Sorry, an error occured", err);
+    }
+}
+
 document.addEventListener("DOMContentLoaded", () => {
-    renderTaskList();
-    renderPersonTable();
+    getTodoListFromServer();
+    getPersonsFromServer();
 });
 
 function renderTaskList() {
@@ -34,7 +67,7 @@ function renderTaskList() {
     for (const i in tasks) {
         taskListElem.innerHTML += (`
             <li>
-                ${tasks[i]}
+                ${tasks[i].title}
                 <button onclick="deleteTask(${i})">X</button>
             </li>
         `);
@@ -57,22 +90,26 @@ function addTask(event) {
     // console.log(event);
     const newTaskInput = document.taskForm.task;
     
-    tasks.push(newTaskInput.value);
+    tasks.push({
+        title: newTaskInput.value
+    });
     renderTaskList();
     
     newTaskInput.value = '';
 }
 
 function personSubmit() {
-    const nameInput = document.personForm.fname;
-    const lastNameInput = document.personForm.lname;
-    const ageInput = document.personForm.age;
+    const nameInput = document.personForm.name;
+    const emailInput = document.personForm.email;
+    const phoneInput = document.personForm.phone;
 
     const newPersonObject = {
         name: nameInput.value,
-        lastName: lastNameInput.value,
-        age: ageInput.value,
+        email: emailInput.value,
+        phone: phoneInput.value,
     };
+
+    addPersonToServer(newPersonObject);
 
     console.log(newPersonObject);
     persons.push(newPersonObject);
@@ -83,6 +120,25 @@ function personSubmit() {
     return false;
 }
 
+async function addPersonToServer(newPerson) {
+    try {
+        response = await fetch("https://jsonplaceholder.typicode.com/users", {
+            method: 'post',
+            body: JSON.stringify(newPerson),
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        });
+        if (response.status === 204) {
+            console.log("Person successfully stored!")
+        }
+        //return await response.json();
+    } catch (error) {
+        console.error(error);
+    }
+}
+
 function renderPersonTable() {
     const personTableElem = document.getElementById("personTable");
     personTableElem.innerHTML = '';
@@ -90,8 +146,8 @@ function renderPersonTable() {
         personTableElem.innerHTML += (`
             <tr id="person-${i}">
                 <td>${persons[i].name}</td>
-                <td>${persons[i].lastName}</td>
-                <td>${persons[i].age}</td>
+                <td>${persons[i].email}</td>
+                <td>${persons[i].phone}</td>
                 <td>
                     <button onclick="deletePerson(${i})">
                         <img src="img/icon-delete.png" alt="Delete icon" width="16px">

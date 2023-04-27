@@ -65,7 +65,7 @@ input {
     margin-top: 2px;
 }
 
-input[type="text"], input[type="number"] {
+input[type="text"], input[type="number"], input[type="email"] {
     padding: 8px 4px;
 }
 
