@@ -4,7 +4,7 @@ let tasks = [];
 let persons = [];
 
 document.addEventListener("DOMContentLoaded", async () => {
-    tasks = await getTodoListFromServer();
+    getTodoListFromServer();
     persons = await getPersonsFromServer();
     renderTaskList();
     renderPersonTable();
