@@ -1,63 +1,13 @@
-//pole (array)
-let tasks = ["Nakupit", "Povysavat", "Naprogramovat", "Kupit auto"];
-/*
-// document.write(tasks);
-// document.write('<br/><br/>');
-// document.write('<ul>');
-// for (const t of tasks) {
-//     document.write('<li>' + t + '</li>');
-// }
+"use strict";
 
-// for (const i in tasks) {
-//     document.write(`<li id="task-${i}">${tasks[i]}</li>`);
-// }
-// document.write('</ul>');
-*/
+let tasks = [];
+let persons = [];
 
-//pole objektov (array of objects)
-let persons = [
-    {
-      name: "Jano", 
-      lastName: "Hrach",
-      age: 18
-    },
-    { name: "Miro", lastName: "Kolesar", age: 25 },
-    { name: "Miska", lastName: "Bacikova", age: 38 },
-    { name: "Peto", lastName: "Bacik", age: 39 },
-];
-
-async function getTodoListFromServer() {
-    const BASE_URL = 'https://jsonplaceholder.typicode.com/todos'
-    
-    try {
-        const response = await fetch(BASE_URL);
-        if (response.status === 200) {
-            tasks = await response.json();
-            renderTaskList();
-        }
-    } catch (err) {
-        console.error("Sorry, an error occured", err);
-    }
-}
-
-async function getPersonsFromServer() {
-    const BASE_URL = 'https://jsonplaceholder.typicode.com/users'
-    
-    try {
-        const response = await fetch(BASE_URL);
-        if (response.status === 200) {
-            persons = await response.json();
-            console.log(persons);
-            renderPersonTable();
-        }
-    } catch (err) {
-        console.error("Sorry, an error occured", err);
-    }
-}
-
-document.addEventListener("DOMContentLoaded", () => {
-    getTodoListFromServer();
-    getPersonsFromServer();
+document.addEventListener("DOMContentLoaded", async () => {
+    tasks = await getTodoListFromServer();
+    persons = await getPersonsFromServer();
+    renderTaskList();
+    renderPersonTable();
 });
 
 function renderTaskList() {
@@ -118,25 +68,6 @@ function personSubmit() {
     renderPersonTable();
 
     return false;
-}
-
-async function addPersonToServer(newPerson) {
-    try {
-        response = await fetch("https://jsonplaceholder.typicode.com/users", {
-            method: 'post',
-            body: JSON.stringify(newPerson),
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            }
-        });
-        if (response.status === 204) {
-            console.log("Person successfully stored!")
-        }
-        //return await response.json();
-    } catch (error) {
-        console.error(error);
-    }
 }
 
 function renderPersonTable() {
