@@ -3,6 +3,10 @@
     color: white;
 } */
 
+body {
+    position: relative;
+}
+
 table th, table td {
     padding: 8px;
 }
@@ -111,11 +115,47 @@ button.small {
     padding: 2px 5px;
 }
 
+.person-overlay {
+    background-color: black;
+    opacity: 55%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    z-index: 10;
+}
+
+.person-overlay.hidden {
+    display: none;
+}
+
+.person-detail-container {
+    height: 100vh;
+    position: fixed;
+    background-color: green;
+    border: 1px solid darkgreen;
+    padding: 2rem;
+    border-radius: 0.5rem;
+    top: 0;
+    right: -10px;
+    width: 50%;
+    z-index: 20;
+    transform: translateX(0);
+}
+
 .person-detail {
     display: grid;
     grid-template-columns: 1fr 2fr 1fr 2fr;
     column-gap: 0.5rem;
     row-gap: 0.25;
+    
+    height: fit-content;
+    width: 100%;
+}
+
+.person-detail-container.hidden {
+    transform: translateX(100%);
 }
 
 .person-detail div {

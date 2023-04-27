@@ -1,0 +1,142 @@
+//example of a scss file for our css
+@use 'colors';
+
+table {
+    background-color: white;
+	width: 100%;
+	text-align: left;
+	border-spacing: 0;
+	margin: 16px 0;
+
+	th, td { padding: 8px; }
+	
+	thead { color: white; }
+	tbody tr {
+		transition: background-color 0.3s ease-in-out;
+		&:nth-child(even) { background-color: rgb(187, 186, 186); }
+		&:hover { background-color: lightslategray; }
+	}
+}
+
+div[class$="-section"] {
+	margin: 20px;
+	padding: 20px;
+}
+
+button {
+	border-radius: 4px;
+	border-style: solid;
+	background-color: transparent;
+	transition: all 0.3s;
+	padding: 8px 16px;
+	
+    &.small { padding: 2px 5px; }
+}
+
+.red-section {
+	background-color: $red-section-bg;
+	border: 14px solid $red-section-;
+	
+	table {
+		background-color: $red-section-light;
+		
+		thead { background-color: $red-section-dark; }
+	}
+}
+
+.blue-section {
+	background-color: aquamarine;
+	border: 14px solid darkslateblue;
+	
+	table { background-color: lightcyan; }
+	
+	thead { background-color: black; }
+	
+	button {
+		border-color: darkslateblue;
+		color: darkslateblue;
+	
+		&:hover {
+			border-color: darkcyan;
+			color: darkcyan;
+			background-color: rgba(0, 0, 0, 0.1);
+		}
+	}
+}
+
+.green-section {
+	background-color: yellowgreen;
+	border: 14px solid darkgoldenrod;
+	
+	table {
+		background-color: lightyellow;
+		
+		thead { background-color: orange; }
+	}
+}
+
+.smiley {
+	box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+	border-radius: 50%;
+}
+
+a {
+	color: brown;
+	font-weight: bold;
+	text-decoration: none;
+	
+	&:hover, &:focus { color: black; }
+	&:visited { color: saddlebrown; }
+}
+
+input {
+	width: 100%;
+	margin-bottom: 8px;
+	margin-top: 2px;
+	
+    &[type="text"], &[type="number"], &[type="email"] { 
+        padding: 8px 4px;
+    }
+}
+
+.section-toolbar {
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-end;
+}
+
+#personFormContainer {
+	visibility: visible;
+	opacity: 1;
+	height: auto;
+	transition: opacity 1s 0.1s ease;
+    
+    &.hidden {
+    	visibility: hidden;
+    	opacity: 0;
+    	height: 0;
+    }
+}
+
+.person-detail {
+	display: grid;
+	grid-template-columns: 1fr 2fr 1fr 2fr;
+	column-gap: 0.5rem;
+	row-gap: 0.25;
+
+	div { padding-top: 1rem; }
+}
+
+@media screen and (max-width: 600px) {
+	.person-detail {
+		grid-template-columns: 1fr 2fr;
+	}
+}
+
+@media screen and (max-width: 320px) {
+	.person-detail {
+		grid-template-columns: 1fr;
+		
+		div:not(:has(label)) { padding-top: 0; }
+	}
+}

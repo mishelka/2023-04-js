@@ -10,24 +10,7 @@
         <link rel="stylesheet" type="text/css" href="dom-oop.css">
     </head>
     <body>
-        <div class="blue-section">
-            <h1>TODO</h1>
-            <ul id="taskList">
-                <li>toto tu bolo predtym</li>
-                <li>aj toto tu bolo</li>
-            </ul>
-
-            <form name="taskForm">
-                <div><small><label for="task">
-                    Zadaj novu ulohu:
-                </label></small></div>
-                <input type="text" id="task" name="task" onblur="upperCase()">
-                
-                <button type="submit"
-                        onclick="addTask(event)">Pridat</button>
-                <button type="reset">Reset</button>
-            </form>
-        </div>
+        
         <div class="green-section">
             <div class="section-toolbar">
                 <h1>Persons</h1>
@@ -74,19 +57,25 @@
                     <button type="submit">Pridaj Osobu</button>
                 </form>
             </div>
-            <div class="person-detail">
-                <div><label><small>Name:</small></label></div>
-                <div>Jano Hrach</div>
+        </div>
+
+        <div class="blue-section">
+            <h1>TODO</h1>
+            <ul id="taskList">
+                <li>toto tu bolo predtym</li>
+                <li>aj toto tu bolo</li>
+            </ul>
+
+            <form name="taskForm">
+                <div><small><label for="task">
+                    Zadaj novu ulohu:
+                </label></small></div>
+                <input type="text" id="task" name="task" onblur="upperCase()">
                 
-                <div><label><small>E-mail:</small></label></div>
-                <div>jahodka@jahodka.sk</div>
-
-                <div><label><small>Phone:</small></label></div>
-                <div>+42190589324</div>
-
-                <div><label><small>Address:</small></label></div>
-                <div>Letna 9, Kosice 040 01</div>
-            </div>
+                <button type="submit"
+                        onclick="addTask(event)">Pridat</button>
+                <button type="reset">Reset</button>
+            </form>
         </div>
 
         <div class="red-section">
@@ -103,6 +92,17 @@
                 </li>
             </ul>
         </div>
+
+        <div id="personDetailContainer" class="person-detail-container hidden">
+            <h2>Person Details</h2>
+            <div class="person-detail" id="personDetail">
+
+            </div>
+        </div>
+        <div id="personOverlay" class="person-overlay hidden"
+             onclick="hidePersonDetail()">
+        </div>
+
         <noscript>Please turn your JavaScript on.</noscript>
     </body>
 </html>

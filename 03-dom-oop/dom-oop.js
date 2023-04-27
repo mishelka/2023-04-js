@@ -77,7 +77,7 @@ function renderPersonTable() {
     for (const i in persons) {
         personTableElem.innerHTML += (`
             <tr id="person-${i}"
-                onclick="getPersonFromServer(${persons[i].id})">
+                onclick="renderPersonDetail(${persons[i].id})">
                 <td>${persons[i].name}</td>
                 <td>${persons[i].email}</td>
                 <td>${persons[i].phone}</td>
@@ -90,6 +90,48 @@ function renderPersonTable() {
             </tr>
         `);
     }
+}
+
+/*
+
+*/
+async function renderPersonDetail(personIndex) {
+    await getPersonFromServer(personIndex);
+
+    const personElem = document.getElementById("personDetail");
+    personElem.innerHTML = '';
+    
+    if(selectedPerson === null) return;
+                                            //name -> Name 
+    for (const prop in selectedPerson) {
+        const value = selectedPerson[prop];
+        const label = `<label><small>${prop[0].toUpperCase()}${prop.substring(1)}:</small></label>`;
+        let desc = value;
+        
+        if(prop === 'address') { desc = `${value.street} ${value.city} ${value.zipcode}`; }
+        else if (prop === 'company') { desc = `${value.name} (${value.bs})`}
+        
+        personElem.innerHTML += (`
+            <div>${label}</div>
+            <div>${desc}</div>
+        `);
+    }
+
+    displayPersonDetail();
+}
+
+function displayPersonDetail() {
+    const personElem = document.getElementById("personDetailContainer");
+    const overlayElem = document.getElementById("personOverlay");
+    personElem.classList.remove("hidden");
+    overlayElem.classList.remove("hidden");
+}
+
+function hidePersonDetail() {
+    const personElem = document.getElementById("personDetailContainer");
+    const overlayElem = document.getElementById("personOverlay");
+    personElem.classList.add("hidden");
+    overlayElem.classList.add("hidden");
 }
 
 function deletePerson(personIndex) {
