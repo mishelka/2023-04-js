@@ -2,6 +2,7 @@
 
 let tasks = [];
 let persons = [];
+let selectedPerson = null;
 
 document.addEventListener("DOMContentLoaded", async () => {
     getTodoListFromServer();
@@ -18,7 +19,7 @@ function renderTaskList() {
         taskListElem.innerHTML += (`
             <li>
                 ${tasks[i].title}
-                <button onclick="deleteTask(${i})">X</button>
+                <button class="small" onclick="deleteTask(${i})">X</button>
             </li>
         `);
     }
@@ -75,12 +76,13 @@ function renderPersonTable() {
     personTableElem.innerHTML = '';
     for (const i in persons) {
         personTableElem.innerHTML += (`
-            <tr id="person-${i}">
+            <tr id="person-${i}"
+                onclick="getPersonFromServer(${persons[i].id})">
                 <td>${persons[i].name}</td>
                 <td>${persons[i].email}</td>
                 <td>${persons[i].phone}</td>
                 <td>
-                    <button onclick="deletePerson(${i})">
+                    <button class="small" onclick="deletePerson(${i})">
                         <img src="img/icon-delete.png" alt="Delete icon" width="16px">
                         Delete
                     </button>
@@ -103,6 +105,7 @@ function deletePerson(personIndex) {
 }
 
 function moveElement() {
+    console.log("move element");
     const superWidget = document.getElementById("widget1");
     const ul = superWidget.parentNode;
     ul.appendChild(superWidget);

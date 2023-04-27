@@ -31,3 +31,17 @@ async function addPersonToServer(newPerson) {
         console.error(error);
     }
 }
+
+async function getPersonFromServer(personIndex) {
+    try {
+        const response = await fetch(USERS_URL + '/' + personIndex);
+        if (response.status === 200) {
+            data = await response.json();
+            console.log(data);
+            selectedPerson = data;
+        }
+    } catch (err) {
+        console.error("Sorry, an error occured", err);
+        selectedPerson = null;
+    }
+}
