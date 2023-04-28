@@ -122,3 +122,80 @@ for (;;) {
         continue;
     document.write(i);
 }
+
+let person = { name: 'Jano', age: 27, describe: () => ('person called ' + this.name) };
+console.log(person);
+let persons = [
+    { name: 'Jano', age: 27, describe: () => ('person called ' + this.name) },
+    { name: 'Jano', age: 27, describe: () => ('person called ' + this.name) },
+    { name: 'Jano', age: 27, describe: () => ('person called ' + this.name) }
+];
+
+class Person {
+    constructor(name, age = 0) {
+        this.name = name;
+        this.age = age;
+    }
+
+    describe() {
+        return 'Person called ' + this.name;
+    }
+}
+
+let person2 = new Person("Jano", 27);
+let persons2 = [
+    new Person("Jano", 27),
+    new Person("Miso", 50),
+    new Person("Peto", 18),
+    new Person("Babatko"),
+];
+console.log(person2);
+console.log(person2.describe());
+
+class Car {
+    constructor(brand, manufactureDate) {
+        this.brand = brand;
+        this.manufactureDate = manufactureDate;
+        this.started = false;
+    }
+
+    start() {
+        this.started = true;
+    }
+    stop() {
+        this.started = false;
+    }
+}
+
+let car = new Car("Toyota", 2020);
+console.log(car);
+car.start();
+console.log(car);
+car.stop();
+console.log(car);
+
+//bulk methods
+console.log(">>>>");
+persons2.forEach(p => console.log(p.describe()));
+console.log("<<<<");
+
+console.log(">>>>");
+persons2.forEach(p => console.log(p.name));
+console.log("<<<<");
+
+console.log(persons2.some(p => p.age > 30));
+console.log(persons2.find(p => p.age > 30));
+console.log(persons2.map(p => p.age));
+console.log(">>>>");
+console.log(persons2.reduce((p1, p2) => {
+    if(p1.age) return p1.age + p2.age;
+    return p1 + p2.age;
+}));
+console.log(persons2.reduce((p1, p2) => {
+    if(p1.name) return p1.name + p2.name;
+    return p1 + p2.name;
+}));
+
+
+console.log(new Date());
+console.log(new Date().getTime());

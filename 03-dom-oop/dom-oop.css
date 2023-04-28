@@ -352,7 +352,7 @@ button:hover {
     }
 }
 
-.mines {
+.mines, .pexeso {
     width: auto;
     border-spacing: 4px;
     border-radius: 4px;
@@ -360,7 +360,12 @@ button:hover {
 .mines tr {
     background-color: white !important;
 }
-.mines tr td {
+
+.pexeso tr {
+    background-color: transparent !important;
+}
+
+.mines tr td, .pexeso tr td {
     border-radius: 4px;
     background-position: center;
     background-size: cover;
@@ -371,7 +376,7 @@ button:hover {
     max-height: 0.5rem;
 }
 
-.mines tr td.closed {
+.mines tr td.closed, .pexeso tr td.closed {
     background-image: url(https://minesweeper.online/img/skins/hd/closed.svg?v=3);
 }
 .mines tr td.open {}

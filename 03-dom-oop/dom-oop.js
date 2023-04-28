@@ -4,6 +4,19 @@ let tasks = [];
 let persons = [];
 let selectedPerson = null;
 
+// // dvere - objekt, state a color - properties/fields/vlastnosti/clenske premenne
+// // open, close - metody = funkcie,
+// // ktore su sucastou objektu a menia jeho stav
+
+// let dvere = {
+//     state: 'closed',
+//     color: brown,
+//     open: () => { this.state = 'open'; },
+//     close: () => { this.state = 'closed'; }
+// };
+// dvere.open();
+// dvere.close();
+
 document.addEventListener("DOMContentLoaded", async () => {
     getTodoListFromServer();
     persons = await getPersonsFromServer();
@@ -25,7 +38,7 @@ function renderTaskList() {
     }
 }
 
-const deleteTask = taskIndex => {
+const deleteTask = (taskIndex = 0) => {
     delete tasks[taskIndex];
     renderTaskList();
 }
