@@ -13,14 +13,14 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 function renderTaskList() {
     const taskListElem = document.getElementById("taskList");
-    // taskListElem.innerHTML += "<li>ahoj</li>";
+    // taskListElem.innerHTML += "<div>ahoj</div>";
     taskListElem.innerHTML = '';
     for (const i in tasks) {
         taskListElem.innerHTML += (`
-            <li>
-                ${tasks[i].title}
-                <button class="small" onclick="deleteTask(${i})">X</button>
-            </li>
+            <div>
+                <div class="label">${tasks[i].title}</div>
+                <button class="small" onclick="deleteTask(${i})">x</button>
+            </div>
         `);
     }
 }
@@ -92,9 +92,6 @@ function renderPersonTable() {
     }
 }
 
-/*
-
-*/
 async function renderPersonDetail(personIndex) {
     await getPersonFromServer(personIndex);
 
@@ -156,4 +153,11 @@ function moveElement() {
 function togglePersonForm() {
     const formElem = document.getElementById("personFormContainer");
     formElem.classList.toggle("hidden");
+}
+
+function toggleMenuList() {
+    const menuList = document.getElementById("menuList");
+    menuList.classList.toggle("hidden");
+    const menuOverlay = document.getElementById("menuOverlay");
+    menuOverlay.classList.toggle("hidden");
 }

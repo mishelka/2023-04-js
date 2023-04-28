@@ -5,10 +5,11 @@
 
 body {
     position: relative;
+    font-family: Roboto, sans-serif;   
 }
 
 table th, table td {
-    padding: 8px;
+    padding: 8px 16px;
 }
 
 div[class$="-section"] {
@@ -97,7 +98,21 @@ button {
     border-style: solid;
     background-color: transparent;
     transition: all 0.3s;
-    padding: 8px 16px;
+
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5em;
+
+    padding: 0.5em 1em;
+}
+
+button.small {
+    padding: 0.25em 0.5em;
+}
+
+button:hover {
+    background-color:  rgba(0, 0, 0, 0.1);
 }
 
 .blue-section button {
@@ -108,14 +123,18 @@ button {
 .blue-section button:hover {
     border-color: darkcyan;
     color: darkcyan;
-    background-color:  rgba(0, 0, 0, 0.1);
 }
 
-button.small {
-    padding: 2px 5px;
+.green-section button:hover {
+    border-color: rgb(2, 58, 2);
+    color: rgb(2, 58, 2);
 }
 
-.person-overlay {
+.green-section table button:hover {
+    background-color: white;
+}
+
+.person-overlay, .menu-overlay {
     background-color: black;
     opacity: 55%;
     position: fixed;
@@ -126,18 +145,23 @@ button.small {
     z-index: 10;
 }
 
-.person-overlay.hidden {
+.person-overlay.hidden, .menu-overlay.hidden {
     display: none;
+}
+
+.menu-overlay {
+    z-index: 3;
 }
 
 .person-detail-container {
     height: 100vh;
     
-    background-color: green;
-    border: 1px solid darkgreen;
+    background-color: darkslategray;
+    color: white;
+
     padding: 2rem;
     border-radius: 0.5rem;
-    
+
     position: fixed;
     top: 0;
     right: -10px;
@@ -147,6 +171,10 @@ button.small {
     transform: translateX(0);
 
     transition: transform 0.3s ease-in-out;
+
+    box-shadow: -7px 0px 22px 0px rgba(0,0,0,0.25);
+    -webkit-box-shadow: -7px 0px 22px 0px rgba(0,0,0,0.25);
+    -moz-box-shadow: -7px 0px 22px 0px rgba(0,0,0,0.25);
 }
 
 .person-detail {
@@ -163,13 +191,154 @@ button.small {
     transform: translateX(100%);
 }
 
+.person-detail label {
+    font-weight: bold;
+}
+
 .person-detail div {
     padding-top: 1rem;
+}
+
+#taskList {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 0.25rem;
+    row-gap: 3px;
+    margin-bottom: 1rem;
+    justify-content: space-evenly;
+}
+
+#taskList div {
+    background-color: black;
+    border-radius: 1rem;
+    color: white;
+    padding: 0.3rem 0.8rem;
+    font-size: 0.8rem;
+    max-width: 10rem;
+    display: inline-flex;
+    align-items: center;
+    column-gap: 0.5em;
+    position: relative;
+    /* flex: 50%; */
+}
+
+#taskList div .label {
+    display: inline-block;
+    padding: 0;
+    min-width: 0;
+    
+    text-align: center;
+
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+#taskList div button {
+    border-radius: 50%;
+    border: none;
+    padding: 0;
+    font-size: 1em;
+}
+
+#taskList button {
+    border-color: darkcyan;
+    color: darkcyan;
+}
+
+#taskList button:hover {
+    border-color: white;
+    color: white;
+}
+
+.navbar {
+    width: 100%;
+    height: 3rem;
+    background-color: rgba(5, 5, 5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    box-shadow: 0px 4px 8px 0px rgba(0,0,0,0.75);
+    z-index: 5;
+
+    display: flex;
+    align-items: center;
+    padding: 0.25rem 0.5rem;
+}
+
+.page-content {
+    margin-top: 5rem;
+}
+
+.hamburgerIcon {
+    width: 3rem;
+    height: 3rem;
+}
+
+.navbar ul {
+    background-color: darkslategray;
+    color: white;
+    list-style: none;
+
+    position: absolute;
+    top: -7px;
+
+    padding: 0.5rem 1rem;
+    width: 10rem;
+    border-radius: 0.25rem;
+}
+
+.navbar ul a, .navbar #menuList2 a {
+    color: white;
+    font-weight: normal;
+}
+
+.navbar ul a:hover, .navbar #menuList2 a:hover {
+    color: white;
+    text-decoration: underline;
+}
+
+.navbar ul li {
+    padding: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 0.25rem;
+}
+
+.navbar ul li:last-of-type {
+    border-bottom: none;
+}
+
+.navbar ul li:hover {
+    text-decoration: underline;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.navbar ul.hidden {
+    display: none;
+}
+
+.navbar #menuList2 {
+    display: flex;
+    align-self: center;
+    justify-content: space-evenly;
+    width: 100%;
+}
+.navbar .hamburgerIcon {
+    display: none;
 }
 
 @media screen and (max-width: 600px) {
     .person-detail {
         grid-template-columns: 1fr 2fr;
+    }
+
+    .navbar #menuList2 {
+        display: none;
+    }
+
+    .navbar .hamburgerIcon {
+        display: block;
     }
 }
 
