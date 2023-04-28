@@ -28,6 +28,10 @@ class PexesoField {
         return this.tiles[row][col];
     }
 
+    setTile(row, col, tile) {
+        this.tiles[row][col] = tile;
+    }
+
     noTile(row, col) {
         return this.tiles[row][col] === null;
     }
@@ -50,7 +54,7 @@ class PexesoField {
             const col = getRandomNumber(columnCount);
 
             if(this.noTile(row, col)) {
-                this.getTile(row, col) = new Tile(currentNumber);
+                this.setTile(row, col, new PexesoTile(currentNumber));
                 currentNumber++;
             }
 
@@ -60,11 +64,12 @@ class PexesoField {
         for (const r in this.tiles) {
             for (const c in this.tiles[r]) {
                 if(this.noTile(r, c)) {
-                    this.getTile(r, c) = new Tile(currentNumber);
+                    this.setTile(r, c, new PexesoTile(currentNumber));
                     currentNumber++;
                 }
             }
         }
+        console.log(this.tiles);
     }
 
     open(row, col) {
