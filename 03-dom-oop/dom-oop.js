@@ -25,18 +25,18 @@ function renderTaskList() {
     }
 }
 
-function deleteTask(taskIndex) {
+const deleteTask = taskIndex => {
     delete tasks[taskIndex];
     renderTaskList();
 }
 
-function upperCase() {
+const upperCase = () => {
     let elem = document.getElementById("task").value;
     //let elem = document.taskForm.task.value;
     document.getElementById("task").value = elem.toUpperCase();
 }
 
-function addTask(event) {
+const addTask = event => {
     event.preventDefault();
     // console.log(event);
     const newTaskInput = document.taskForm.task;

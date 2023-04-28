@@ -351,3 +351,34 @@ button:hover {
         padding-top: 0;
     }
 }
+
+.mines {
+    width: auto;
+    border-spacing: 4px;
+    border-radius: 4px;
+}
+.mines tr {
+    background-color: white !important;
+}
+.mines tr td {
+    border-radius: 4px;
+    background-position: center;
+    background-size: cover;
+
+    min-width: 0.5rem;
+    min-height: 0.5rem;
+    max-width: 0.5rem;
+    max-height: 0.5rem;
+}
+
+.mines tr td.closed {
+    background-image: url(https://minesweeper.online/img/skins/hd/closed.svg?v=3);
+}
+.mines tr td.open {}
+.mines tr td.marked {
+    background-image: url(https://minesweeper.online/img/skins/hd/flag.svg?v=3);
+}
+
+.mines tr td.open.mine {
+    background-image: url(https://minesweeper.online/img/skins/hd/mine_red.svg?v=3);
+}
